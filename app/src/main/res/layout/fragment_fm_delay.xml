@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fmDelay">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SeekBar
+            android:id="@+id/delayBar1"
+            android:layout_width="410dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="-1dp"
+            app:layout_constraintEnd_toStartOf="@+id/msView1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/delayBar2"
+            android:layout_width="410dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/delayBar1" />
+
+        <SeekBar
+            android:id="@+id/delayBar3"
+            android:layout_width="410dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/delayBar2" />
+
+        <SeekBar
+            android:id="@+id/delayBar4"
+            android:layout_width="410dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/delayBar3" />
+
+        <Switch
+            android:id="@+id/swG1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="2dp"
+            android:text="Group1"
+            app:layout_constraintBottom_toTopOf="@+id/delayBar1"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Switch
+            android:id="@+id/swG2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="2dp"
+            android:text="Group2"
+            app:layout_constraintBottom_toTopOf="@+id/delayBar2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Switch
+            android:id="@+id/swG3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="2dp"
+            android:text="Group3"
+            app:layout_constraintBottom_toTopOf="@+id/delayBar3"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Switch
+            android:id="@+id/swG4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="2dp"
+            android:text="Group4"
+            app:layout_constraintBottom_toTopOf="@+id/delayBar4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/msView1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="100dp"
+            android:text="0 ms"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/delayBar1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mView1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="100dp"
+            android:text="0.00 m"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/msView1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mView2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="0.00 m"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/msView2"
+            app:layout_constraintTop_toBottomOf="@+id/mView1" />
+
+        <TextView
+            android:id="@+id/mView4"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="0.00 m"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/msView4"
+            app:layout_constraintTop_toBottomOf="@+id/mView3" />
+
+        <TextView
+            android:id="@+id/mView3"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="0.00 m"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/msView3"
+            app:layout_constraintTop_toBottomOf="@+id/mView2" />
+
+        <TextView
+            android:id="@+id/msView2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="0 ms"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/delayBar2"
+            app:layout_constraintTop_toBottomOf="@+id/msView1" />
+
+        <TextView
+            android:id="@+id/msView3"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="0 ms"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/delayBar3"
+            app:layout_constraintTop_toBottomOf="@+id/msView2" />
+
+        <TextView
+            android:id="@+id/msView4"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="0 ms"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toEndOf="@+id/delayBar4"
+            app:layout_constraintTop_toBottomOf="@+id/msView3" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fmHome">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="1dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="65dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toEndOf="@+id/listSpk"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="1dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="95dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
+            android:layout_width="21dp"
+            android:layout_height="235dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="77dp"
+            app:layout_constraintStart_toEndOf="@+id/progressVol2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
+                android:id="@+id/masterBar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:max="100"
+                android:progress="0"
+                android:splitTrack="false"
+                app:seekBarRotation="CW270" /> <!-- Rotation: CW90 or CW270 -->
+        </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
+
+        <ListView
+            android:id="@+id/listSpk"
+            android:layout_width="135dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressVol2"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="15dp"
+            android:layout_height="215dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="85dp"
+            android:adjustViewBounds="true"
+            android:max="120"
+            android:progress="5"
+            app:layout_constraintStart_toEndOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="182dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="182dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="64dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="182dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toBottomOf="@+id/divider8" />
+
+        <View
+            android:id="@+id/divider9"
+            android:layout_width="182dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toBottomOf="@+id/divider6" />
+
+        <Button
+            android:id="@+id/butG1"
+            android:layout_width="74dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:text="GROUP1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+        <Button
+            android:id="@+id/butG2"
+            android:layout_width="74dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:text="GROUP2"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/butG1"
+            app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+        <Button
+            android:id="@+id/butG3"
+            android:layout_width="74dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:text="GROUP3"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/butG2"
+            app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+        <Button
+            android:id="@+id/butG4"
+            android:layout_width="74dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:text="GROUP4"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/butG3"
+            app:layout_constraintTop_toBottomOf="@+id/divider9" />
+
+        <Button
+            android:id="@+id/butExport"
+            android:layout_width="74dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:text="export"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/butG4"
+            app:layout_constraintTop_toBottomOf="@+id/divider9" />
+
+        <ListView
+            android:id="@+id/listG1"
+            android:layout_width="181dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="79dp"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="40dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="64dp"
+            android:text="Group1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/listSpk"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="40dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="174dp"
+            android:text="Group3"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/listSpk"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="40dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="80dp"
+            android:text="Group2"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="40dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="174dp"
+            android:layout_marginEnd="80dp"
+            android:text="Group4"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/listG2"
+            android:layout_width="181dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/listG3"
+            android:layout_width="181dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="190dp"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/listG4"
+            android:layout_width="181dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="190dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMaster"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="61dp"
+            android:text="MASTER : 0 dB"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fmLoad">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/loadList"
+            android:layout_width="309dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/butOpen"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="67dp"
+            android:text="OPEN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/butDel"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="67dp"
+            android:text="DELETE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/butOpen" />
+
+        <Button
+            android:id="@+id/butBack"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="67dp"
+            android:text="BACK"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/butDel" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="544dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="48dp"
+            android:text="TextView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="50dp" />
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

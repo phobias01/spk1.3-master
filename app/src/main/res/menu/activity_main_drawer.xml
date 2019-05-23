@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="HOME" />
+        <item
+            android:id="@+id/nav_wifi"
+            android:title="WI-FI" />
+        <item
+            android:id="@+id/nav_eq"
+            android:title="EQ" />
+        <item
+            android:id="@+id/nav_cross"
+            android:title="CROSSOVER" />
+        <item
+            android:id="@+id/nav_delay"
+            android:title="DELAY" />
+    </group>
+
+    <item android:title="Manage">
+        <menu>
+            <item
+                android:id="@+id/nav_new"
+                android:title="NEW" />
+            <item
+                android:id="@+id/nav_load"
+                android:title="LOAD" />
+            <item
+                android:id="@+id/nav_save"
+                android:title="SAVE" />
+
+        </menu>
+    </item>
+
+</menu>
