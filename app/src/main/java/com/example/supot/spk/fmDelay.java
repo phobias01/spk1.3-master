@@ -149,7 +149,7 @@ public class fmDelay extends Fragment {
         swG2 = (Switch) view.findViewById(R.id.swG2);
         swG3 = (Switch) view.findViewById(R.id.swG3);
         swG4 = (Switch) view.findViewById(R.id.swG4);
-        initsetSwitch();
+        initsetSwitchDelay();
         swG1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -209,10 +209,10 @@ public class fmDelay extends Fragment {
         delayBar3.setProgress(sp.getInt(Const.delay_bar_3,100));
         delayBar4.setProgress(sp.getInt(Const.delay_bar_4,100));
 
-        int saveProgress1 = sp.getInt(Const.delay_bar_1,100)-100;
-        int saveProgress2 = sp.getInt(Const.delay_bar_2,100)-100;
-        int saveProgress3 = sp.getInt(Const.delay_bar_3,100)-100;
-        int saveProgress4 = sp.getInt(Const.delay_bar_4,100)-100;
+        int saveProgress1 = sp.getInt(Const.delay_bar_1,100);
+        int saveProgress2 = sp.getInt(Const.delay_bar_2,100);
+        int saveProgress3 = sp.getInt(Const.delay_bar_3,100);
+        int saveProgress4 = sp.getInt(Const.delay_bar_4,100);
 
 
         msView1.setText(saveProgress1+" ms");
@@ -224,7 +224,7 @@ public class fmDelay extends Fragment {
         msView4.setText(saveProgress4+" ms");
         mView4.setText(String.format("%.2f",saveProgress4*0.343)+" m");
     }
-    private void initsetSwitch() {
+    private void initsetSwitchDelay() {
         swG1.setChecked(sp.getBoolean(Const.switch_delay_1, false));
         swG2.setChecked(sp.getBoolean(Const.switch_delay_2, false));
         swG3.setChecked(sp.getBoolean(Const.switch_delay_3, false));
