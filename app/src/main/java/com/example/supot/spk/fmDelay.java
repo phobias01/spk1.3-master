@@ -149,7 +149,7 @@ public class fmDelay extends Fragment {
         swG2 = (Switch) view.findViewById(R.id.swG2);
         swG3 = (Switch) view.findViewById(R.id.swG3);
         swG4 = (Switch) view.findViewById(R.id.swG4);
-
+        initsetSwitch();
         swG1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -158,6 +158,8 @@ public class fmDelay extends Fragment {
                 }else{
                     delayBar1.setEnabled(true);
                 }
+                editor.putBoolean(Const.switch_delay_1, isChecked);
+                editor.commit();
             }
         });
 
@@ -169,6 +171,8 @@ public class fmDelay extends Fragment {
                 }else{
                     delayBar2.setEnabled(true);
                 }
+                editor.putBoolean(Const.switch_delay_2, isChecked);
+                editor.commit();
             }
         });
 
@@ -180,6 +184,8 @@ public class fmDelay extends Fragment {
                 }else{
                     delayBar3.setEnabled(true);
                 }
+                editor.putBoolean(Const.switch_delay_3, isChecked);
+                editor.commit();
             }
         });
 
@@ -191,6 +197,8 @@ public class fmDelay extends Fragment {
                 }else{
                     delayBar4.setEnabled(true);
                 }
+                editor.putBoolean(Const.switch_delay_4, isChecked);
+                editor.commit();
             }
         });
     }
@@ -216,5 +224,23 @@ public class fmDelay extends Fragment {
         msView4.setText(saveProgress4+" ms");
         mView4.setText(String.format("%.2f",saveProgress4*0.343)+" m");
     }
+    private void initsetSwitch() {
+        swG1.setChecked(sp.getBoolean(Const.switch_delay_1, false));
+        swG2.setChecked(sp.getBoolean(Const.switch_delay_2, false));
+        swG3.setChecked(sp.getBoolean(Const.switch_delay_3, false));
+        swG4.setChecked(sp.getBoolean(Const.switch_delay_4, false));
 
+        if(sp.getBoolean(Const.switch_delay_1, false)==true){
+            delayBar1.setEnabled(false);
+        }
+        if(sp.getBoolean(Const.switch_delay_2, false)==true){
+            delayBar2.setEnabled(false);
+        }
+        if(sp.getBoolean(Const.switch_delay_3, false)==true){
+            delayBar3.setEnabled(false);
+        }
+        if(sp.getBoolean(Const.switch_delay_4, false)==true){
+            delayBar4.setEnabled(false);
+        }
+    }
 }
