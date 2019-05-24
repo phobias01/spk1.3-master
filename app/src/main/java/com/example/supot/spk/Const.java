@@ -6,6 +6,7 @@ public class Const {
 
     public static final String sp_channel = "SP_CHANNEL";
 
+    public static final String button_stop_eq_slide = "button_stop_eq_slide";
     public static final String master_eq_slide = "master_eq_slide";
     public static final String master_eq_slide_value_1 = "master_eq_slide_value_1";
     public static final String master_eq_slide_value_2 = "master_eq_slide_value_2";
@@ -38,6 +39,17 @@ public class Const {
     public static final String switch_delay_2 = "switch_delay_2";
     public static final String switch_delay_3 = "switch_delay_3";
     public static final String switch_delay_4 = "switch_delay_4";
+
+    public static final String list_group_spk = "list_group_spk";
+    public static final String list_group_1 = "list_group_1";
+    public static final String list_group_2 = "list_group_2";
+    public static final String list_group_3 = "list_group_3";
+    public static final String list_group_4 = "list_group_4";
+
+    public static final String crossover_min = "crossover_min";
+    public static final String crossover_max = "crossover_max";
+
+
 
 
 }

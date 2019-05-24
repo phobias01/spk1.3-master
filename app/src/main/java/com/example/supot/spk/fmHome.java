@@ -16,8 +16,9 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -38,6 +39,7 @@ public class fmHome extends Fragment {
     private Button butExport,butG1,butG2,butG3,butG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,10 +108,10 @@ public class fmHome extends Fragment {
         arrayG3 = new ArrayList<>();
         arrayG4 = new ArrayList<>();
 
-
+        //Set<String> setSpk = new HashSet<String>();
         for (int i = 0; i < 50; i++) {
             arraySpk.add("Spk NO." + i);
-            //arrayG1.add("Spk NO." + i);
+            //setSpk.add("Spk NO." + i);
         }
 
         adapterSpk = new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arraySpk);
@@ -136,6 +138,7 @@ public class fmHome extends Fragment {
                                 listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listG1.setAdapter(adapterG1);
                                 adapterSpk.remove(arraySpk.get(i));
+
                             }
                         }
                         checkedItemPositions.clear();

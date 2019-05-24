@@ -39,7 +39,9 @@ public class fmEQ extends Fragment {
         sp = this.getActivity().getSharedPreferences(Const.sp_channel, Context.MODE_PRIVATE);
         editor = sp.edit();
         initEq(view);
-        butStopEq.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        if(isOnEQ) {
+            butStopEq.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
         return view;
     }
 
@@ -432,11 +434,10 @@ public class fmEQ extends Fragment {
                 editor.commit();
             }
         });
-
         butStopEq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isOnEQ) {
+                if (isOnEQ==true) {
                     offSeekBar();
                     butStopEq.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                     isOnEQ = false;

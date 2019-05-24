@@ -251,11 +251,12 @@
             android:id="@+id/tvMaster"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="61dp"
+            android:layout_marginStart="548dp"
+            android:layout_marginTop="60dp"
             android:text="MASTER : 0 dB"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
