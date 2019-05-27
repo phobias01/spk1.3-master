@@ -201,10 +201,10 @@ public class MTG extends AppCompatActivity {
         BarG3.setProgress(sp.getInt(Const.group_value_3,80));
         BarG4.setProgress(sp.getInt(Const.group_value_4,80));
 
-        int saveProgress1 = sp.getInt(Const.group_value_1,40)-80;
-        int saveProgress2 = sp.getInt(Const.group_value_2,40)-80;
-        int saveProgress3 = sp.getInt(Const.group_value_3,40)-80;
-        int saveProgress4 = sp.getInt(Const.group_value_4,40)-80;
+        int saveProgress1 = sp.getInt(Const.group_value_1,80)-80;
+        int saveProgress2 = sp.getInt(Const.group_value_2,80)-80;
+        int saveProgress3 = sp.getInt(Const.group_value_3,80)-80;
+        int saveProgress4 = sp.getInt(Const.group_value_4,80)-80;
 
         tvG1.setText(String.valueOf("G1 : "+saveProgress1+" dB"));
         tvG2.setText(String.valueOf("G2 : "+saveProgress2+" dB"));

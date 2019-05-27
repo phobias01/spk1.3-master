@@ -48,6 +48,9 @@ public class Const {
 
     public static final String crossover_min = "crossover_min";
     public static final String crossover_max = "crossover_max";
+    public static final String set_crossover_min = "crossover_min";
+    public static final String set_crossover_max = "crossover_max";
+
 
 
 

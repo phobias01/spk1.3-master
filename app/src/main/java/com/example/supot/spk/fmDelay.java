@@ -204,15 +204,15 @@ public class fmDelay extends Fragment {
     }
     private void initsetDelayBar(){
 
-        delayBar1.setProgress(sp.getInt(Const.delay_bar_1,100));
-        delayBar2.setProgress(sp.getInt(Const.delay_bar_2,100));
-        delayBar3.setProgress(sp.getInt(Const.delay_bar_3,100));
-        delayBar4.setProgress(sp.getInt(Const.delay_bar_4,100));
+        delayBar1.setProgress(sp.getInt(Const.delay_bar_1,0));
+        delayBar2.setProgress(sp.getInt(Const.delay_bar_2,0));
+        delayBar3.setProgress(sp.getInt(Const.delay_bar_3,0));
+        delayBar4.setProgress(sp.getInt(Const.delay_bar_4,0));
 
-        int saveProgress1 = sp.getInt(Const.delay_bar_1,100);
-        int saveProgress2 = sp.getInt(Const.delay_bar_2,100);
-        int saveProgress3 = sp.getInt(Const.delay_bar_3,100);
-        int saveProgress4 = sp.getInt(Const.delay_bar_4,100);
+        int saveProgress1 = sp.getInt(Const.delay_bar_1,0);
+        int saveProgress2 = sp.getInt(Const.delay_bar_2,0);
+        int saveProgress3 = sp.getInt(Const.delay_bar_3,0);
+        int saveProgress4 = sp.getInt(Const.delay_bar_4,0);
 
 
         msView1.setText(saveProgress1+" ms");

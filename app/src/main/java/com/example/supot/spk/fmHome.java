@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 
 /**
@@ -34,11 +36,12 @@ public class fmHome extends Fragment {
     private SeekBar masterBar;
     private Context context;
     private ListView listSpk,listG1,listG2,listG3,listG4;
-    private ArrayList<String> arraySpk,arrayG1,arrayG2,arrayG3,arrayG4;
+    private ArrayList<String> arraySpk,arrayG1,arrayG2,arrayG3,arrayG4,AlistSpk,AlistG1,AlistG2,AlistG3,AlistG4;
     private ArrayAdapter adapterSpk,adapterG1,adapterG2,adapterG3,adapterG4;
     private Button butExport,butG1,butG2,butG3,butG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
 
 
     @Override
@@ -107,13 +110,22 @@ public class fmHome extends Fragment {
         arrayG2 = new ArrayList<>();
         arrayG3 = new ArrayList<>();
         arrayG4 = new ArrayList<>();
-
+        AlistSpk = new ArrayList<>();
+        AlistG1 = new ArrayList<>();
+        AlistG2 = new ArrayList<>();
+        AlistG3 = new ArrayList<>();
+        AlistG4 = new ArrayList<>();
+        arrayG1 = new ArrayList<>();
+        arrayG2 = new ArrayList<>();
+        arrayG3 = new ArrayList<>();
+        arrayG4 = new ArrayList<>();
+        final Set<String> setListSpk = new HashSet<String>();
+        final Set<String> setListG1 = new HashSet<String>();
+        final Stack<String> STACK = new Stack<String>();
         //Set<String> setSpk = new HashSet<String>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 1; i <= 50; i++) {
             arraySpk.add("Spk NO." + i);
-            //setSpk.add("Spk NO." + i);
         }
-
         adapterSpk = new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arraySpk);
         listSpk.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listSpk.setAdapter(adapterSpk);
@@ -135,12 +147,16 @@ public class fmHome extends Fragment {
                         for(int i=itemCount-1; i >= 0; i--){
                             if(checkedItemPositions.get(i)){
                                 arrayG1.add(arraySpk.get(i));
+                               // STACK.push(arraySpk.get(i));
                                 listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listG1.setAdapter(adapterG1);
-                                adapterSpk.remove(arraySpk.get(i));
-
+                                arraySpk.remove(arraySpk.get(i));
+                                //setListSpk.remove(arraySpk.get(i));
                             }
                         }
+                        setListG1.addAll(arrayG1);
+                        editor.putStringSet(Const.list_group_1,setListG1);
+                        editor.commit();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG1.notifyDataSetChanged();
@@ -157,7 +173,7 @@ public class fmHome extends Fragment {
                                 arrayG2.add(arraySpk.get(i));
                                 listG2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listG2.setAdapter(adapterG2);
-                                adapterSpk.remove(arraySpk.get(i));
+                                arraySpk.remove(arraySpk.get(i));
                             }
                         }
                         checkedItemPositions.clear();
@@ -176,7 +192,7 @@ public class fmHome extends Fragment {
                                 arrayG3.add(arraySpk.get(i));
                                 listG3.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listG3.setAdapter(adapterG3);
-                                adapterSpk.remove(arraySpk.get(i));
+                                arraySpk.remove(arraySpk.get(i));
                             }
                         }
                         checkedItemPositions.clear();
@@ -195,7 +211,7 @@ public class fmHome extends Fragment {
                                 arrayG4.add(arraySpk.get(i));
                                 listG4.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listG4.setAdapter(adapterG4);
-                                adapterSpk.remove(arraySpk.get(i));
+                                arraySpk.remove(arraySpk.get(i));
                             }
                         }
                         checkedItemPositions.clear();
@@ -205,7 +221,6 @@ public class fmHome extends Fragment {
                 });
             }
         });
-
         listG1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -220,9 +235,16 @@ public class fmHome extends Fragment {
                                 arraySpk.add(arrayG1.get(i));
                                 listSpk.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listSpk.setAdapter(adapterSpk);
-                                adapterG1.remove(arrayG1.get(i));
+                                //adapterG1.remove(arrayG1.get(i));
+                                arrayG1.remove(arrayG1.get(i));
+                                /*setListG1.addAll(arrayG1);
+                                editor.putStringSet(Const.list_group_1,setListG1);
+                                editor.commit();*/
                             }
                         }
+                        setListG1.addAll(arrayG1);
+                        editor.putStringSet(Const.list_group_1,setListG1);
+                        editor.commit();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG1.notifyDataSetChanged();
@@ -302,5 +324,12 @@ public class fmHome extends Fragment {
                 });
             }
         });
+        final Set<String> story = sp.getStringSet(Const.list_group_1,null);
+        for (String x: story) {
+            arrayG1.add(x);
+        }
+        listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listG1.setAdapter(adapterG1);
+        adapterG1.notifyDataSetChanged();
     }
 }

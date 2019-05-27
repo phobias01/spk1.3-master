@@ -5,10 +5,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
@@ -26,10 +30,11 @@ public class fmCrossover extends Fragment {
         // Required empty public constructor
     }
 
-    private CrystalRangeSeekbar crossBar;
+    private EditText editMin,editMax;
     private TextView tvMin;
     private TextView tvMax;
     private RangeSeekBar crossoverBar;
+    private Button butSet;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
@@ -40,16 +45,20 @@ public class fmCrossover extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fm_crossover, container, false);
         sp = this.getActivity().getSharedPreferences(Const.sp_channel, Context.MODE_PRIVATE);
         editor = sp.edit();
+        tvMin = (TextView) view.findViewById(R.id.tvMin);
+        tvMax = (TextView) view.findViewById(R.id.tvMax);
+        crossoverBar = (RangeSeekBar)view.findViewById(R.id.crossoverBar);
         initCrossoverBar(view);
+        setVolumeCrossover(view);
         return view;
 
     }
     private void initCrossoverBar(View view) {
-        tvMin = (TextView) view.findViewById(R.id.tvMin);
-        tvMax = (TextView) view.findViewById(R.id.tvMax);
-        crossoverBar = (RangeSeekBar)view.findViewById(R.id.crossoverBar);
+        //tvMin = (TextView) view.findViewById(R.id.tvMin);
+        //tvMax = (TextView) view.findViewById(R.id.tvMax);
+        //crossoverBar = (RangeSeekBar)view.findViewById(R.id.crossoverBar);
         crossoverBar.setRange(20,20000);
-        crossoverBar.setValue(sp.getInt(Const.crossover_min,20),sp.getInt(Const.crossover_max,20000));
+        crossoverBar.setValue(sp.getInt(Const.crossover_min,50),sp.getInt(Const.crossover_max,500));
         int minValue = sp.getInt(Const.crossover_min,20);
         int maxValue = sp.getInt(Const.crossover_max,20000);
         tvMin.setText(String.valueOf(minValue+" Hz"));
@@ -78,7 +87,43 @@ public class fmCrossover extends Fragment {
                 editor.commit();
             }
         });
+    }
 
+    private void setVolumeCrossover (View view) {
+        editMin = (EditText)view.findViewById(R.id.editMin);
+        editMax = (EditText)view.findViewById(R.id.editMax);
+        butSet = (Button) view.findViewById(R.id.butSet);
+        //int aa = Integer.valueOf(editMin.getText().toString());
+        butSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String min = editMin.getText().toString();
+                    String max = editMax.getText().toString();
+                    int valueMin = Integer.valueOf(min);
+                    int valueMax = Integer.valueOf(max);
+                    if(!min.equals(null)){
+                        tvMin.setText(min+" Hz");
+                        editor.putInt(Const.set_crossover_min,valueMin);
+                        editor.commit();
+                     }
+                    if(!max.equals(null)){
+                        tvMax.setText(max+" Hz");
+                        editor.putInt(Const.set_crossover_max,valueMax);
+                        editor.commit();
+                    }
+                    Log.d("26JanV1", "position sickdata ==>  " + valueMin);
+                    Log.d("26JanV1", "position sickdata ==>  " + valueMax);
+                    //editor.putInt(Const.set_crossover_min,valueMin);
+                    //editor.putInt(Const.set_crossover_max,valueMax);
+                    //editor.commit();
+                    int cmin = sp.getInt(Const.crossover_min,50);
+                    int cmax = sp.getInt(Const.crossover_max,500);
+                    crossoverBar.setValue(sp.getInt(Const.set_crossover_min,cmin),sp.getInt(Const.set_crossover_max,cmax));
+                }catch (Exception e) {Toast.makeText(getActivity(),"Please enter a value.", Toast.LENGTH_SHORT).show();}
+
+            }
+        });
 
     }
 }
