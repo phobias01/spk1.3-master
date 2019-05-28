@@ -1,5 +1,6 @@
 package com.example.supot.spk;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("HOME");
+        //toolbar.setTitle("CONNECT");
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -36,10 +37,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.maincontent,new fmHome())
+                    .replace(R.id.maincontent,new fmConnect())
                     .commit();
         }
     }
@@ -95,10 +95,6 @@ public class MainActivity extends AppCompatActivity
                 fm = new fmLoad();
                 strTitle = "LOAD";
                 break;
-            case R.id.nav_wifi:
-                fm = new fmWIFI();
-                strTitle = "WI-FI";
-                break;
             case R.id.nav_eq:
                 fm = new fmEQ();
                 strTitle = "EQUALIZER";
@@ -117,8 +113,7 @@ public class MainActivity extends AppCompatActivity
             ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.maincontent,fm);
             ft.commit();
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            toolbar.setTitle(strTitle);
+            getSupportActionBar().setSubtitle(strTitle);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 

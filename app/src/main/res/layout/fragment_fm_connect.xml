@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fmConnect">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".connect">
+
+        <EditText
+            android:id="@+id/editIP"
+            android:layout_width="295dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="140dp"
+            android:ems="10"
+            android:hint="Enter IP"
+            android:inputType="textPersonName"
+            android:text="192.168.137.239"
+            app:layout_constraintStart_toEndOf="@+id/textView26"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/butOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:text="offline"
+            app:layout_constraintStart_toEndOf="@+id/editIP"
+            app:layout_constraintTop_toBottomOf="@+id/butCon" />
+
+        <Button
+            android:id="@+id/butCon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="140dp"
+            android:text="connect"
+            app:layout_constraintStart_toEndOf="@+id/editIP"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="156dp"
+            android:text="IP ADDRESS"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

@@ -8,9 +8,6 @@
             android:id="@+id/nav_home"
             android:title="HOME" />
         <item
-            android:id="@+id/nav_wifi"
-            android:title="WI-FI" />
-        <item
             android:id="@+id/nav_eq"
             android:title="EQ" />
         <item

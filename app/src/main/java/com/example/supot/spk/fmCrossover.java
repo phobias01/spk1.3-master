@@ -54,9 +54,6 @@ public class fmCrossover extends Fragment {
 
     }
     private void initCrossoverBar(View view) {
-        //tvMin = (TextView) view.findViewById(R.id.tvMin);
-        //tvMax = (TextView) view.findViewById(R.id.tvMax);
-        //crossoverBar = (RangeSeekBar)view.findViewById(R.id.crossoverBar);
         crossoverBar.setRange(20,20000);
         crossoverBar.setValue(sp.getInt(Const.crossover_min,50),sp.getInt(Const.crossover_max,500));
         int minValue = sp.getInt(Const.crossover_min,20);
@@ -93,7 +90,6 @@ public class fmCrossover extends Fragment {
         editMin = (EditText)view.findViewById(R.id.editMin);
         editMax = (EditText)view.findViewById(R.id.editMax);
         butSet = (Button) view.findViewById(R.id.butSet);
-        //int aa = Integer.valueOf(editMin.getText().toString());
         butSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,11 +108,8 @@ public class fmCrossover extends Fragment {
                         editor.putInt(Const.set_crossover_max,valueMax);
                         editor.commit();
                     }
-                    Log.d("26JanV1", "position sickdata ==>  " + valueMin);
-                    Log.d("26JanV1", "position sickdata ==>  " + valueMax);
-                    //editor.putInt(Const.set_crossover_min,valueMin);
-                    //editor.putInt(Const.set_crossover_max,valueMax);
-                    //editor.commit();
+                    //Log.d("26JanV1", "position sickdata ==>  " + valueMin);
+                    //Log.d("26JanV1", "position sickdata ==>  " + valueMax);
                     int cmin = sp.getInt(Const.crossover_min,50);
                     int cmax = sp.getInt(Const.crossover_max,500);
                     crossoverBar.setValue(sp.getInt(Const.set_crossover_min,cmin),sp.getInt(Const.set_crossover_max,cmax));

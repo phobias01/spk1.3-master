@@ -6,7 +6,7 @@ public class Const {
 
     public static final String sp_channel = "SP_CHANNEL";
 
-    public static final String button_stop_eq_slide = "button_stop_eq_slide";
+    //public static final String button_stop_eq_slide = "button_stop_eq_slide";
     public static final String master_eq_slide = "master_eq_slide";
     public static final String master_eq_slide_value_1 = "master_eq_slide_value_1";
     public static final String master_eq_slide_value_2 = "master_eq_slide_value_2";
@@ -50,6 +50,9 @@ public class Const {
     public static final String crossover_max = "crossover_max";
     public static final String set_crossover_min = "crossover_min";
     public static final String set_crossover_max = "crossover_max";
+
+    public static spkConnect spkconnect =null;
+
 
 
 

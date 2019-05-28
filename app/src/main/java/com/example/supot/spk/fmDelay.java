@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,8 @@ public class fmDelay extends Fragment {
     private Switch swG1,swG2,swG3,swG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    String dataOutput = "";
+    sendTCP sd = new sendTCP();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +70,9 @@ public class fmDelay extends Fragment {
                 msView1.setText(progress+" ms");
                 mView1.setText(String.format("%.2f",progress*0.343)+" m");
                 value = progress;
+                dataOutput = "delay1/"+progress;
+                sd.sendTCP(dataOutput);
+                Log.d("26JanV1", "DElay ==>  " + Const.ip+"/"+Const.port);
             }
 
             @Override
@@ -76,6 +82,8 @@ public class fmDelay extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //sd.sendTCP(dataOutput);
+                //Log.d("26JanV1", "DElay ==>  " + Const.ip+"/"+Const.port);
                 editor.putInt(Const.delay_bar_1,value);
                 editor.commit();
             }
