@@ -1,7 +1,9 @@
 package com.example.supot.spk;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -27,12 +29,16 @@ public class fmConnect extends Fragment {
     }
     private Button butCon,butOff;
     private Toolbar toolbar;
+    //SharedPreferences sp;
+    //SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fm_connect, container, false);
+        //sp = this.getActivity().getSharedPreferences(Const.sp_channel, Context.MODE_PRIVATE);
+        //editor = sp.edit();
         initView(view);
         return  view;
     }
@@ -62,8 +68,10 @@ public class fmConnect extends Fragment {
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.maincontent,new fmHome());
                 ft.commit();
+                //editor.putString(Const.ip,editIP.getText().toString());
+                //editor.commit();
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("HOME");
-                Toast.makeText(getActivity(), Const.ip+"/"+Const.port, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), Const.ip+"/"+Const.port, Toast.LENGTH_SHORT).show();
 
             }
         });

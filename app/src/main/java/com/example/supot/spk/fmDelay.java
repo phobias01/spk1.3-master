@@ -72,7 +72,7 @@ public class fmDelay extends Fragment {
                 value = progress;
                 dataOutput = "delay1/"+progress;
                 sd.sendTCP(dataOutput);
-                Log.d("26JanV1", "DElay ==>  " + Const.ip+"/"+Const.port);
+               // Log.d("26JanV1", "Delay ==>  " + progress);
             }
 
             @Override

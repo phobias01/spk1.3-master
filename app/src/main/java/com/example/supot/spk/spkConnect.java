@@ -14,9 +14,6 @@ public class spkConnect {
     private BufferedReader br;
     private PrintWriter pw;
 
-    private boolean interrupt = false;
-
-    boolean isReady = false;
 
     public spkConnect(String ip, int port) {
         this.ip = ip;
@@ -27,11 +24,12 @@ public class spkConnect {
     public void sendData(String str) {
         try {
             s = new Socket(this.ip, this.port);
+            //Log.d("26JanV1", "Connect ==> " + this.ip+"/"+this.port);
             br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             pw = new PrintWriter(s.getOutputStream(), true);
-            Log.d("26JanV1", "Connect ==>  " + str);
-            pw.println(str);
 
+            pw.println(str);
+            Log.d("26JanV1", "Connect ==>  222");
             br.close();
             pw.close();
             s.close();
