@@ -33,7 +33,7 @@ public class fmDelay extends Fragment {
     private Switch swG1,swG2,swG3,swG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
-    String dataOutput = null;
+    private String dataOutput = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

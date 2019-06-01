@@ -16,6 +16,9 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.akexorcist.simpletcp.SimpleTcpClient;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -41,7 +44,7 @@ public class fmHome extends Fragment {
     private Button butExport,butG1,butG2,butG3,butG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
-
+    private String dataOutput = null;
 
 
     @Override
@@ -72,6 +75,8 @@ public class fmHome extends Fragment {
                 progressChanged = progress-80;
                 value = progress;
                 tvMaster.setText(String.format("MASTER : %.0f dB",progressChanged));
+                dataOutput = String.format("eqm/%.0f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
 
             }
 

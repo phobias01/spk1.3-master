@@ -14,6 +14,8 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.akexorcist.simpletcp.SimpleTcpClient;
+
 public class MTG extends AppCompatActivity {
 
     private Button butBack;
@@ -22,21 +24,12 @@ public class MTG extends AppCompatActivity {
     private TextView tvG1,tvG2,tvG3,tvG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    private String dataOutput = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mtg);
-        butBack = (Button) findViewById(R.id.butBack);
-        butBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fmeq = new fmEQ();
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.maincontent,fmeq);
-                ft.commit();
-            }
-        });
         sp = getSharedPreferences(Const.sp_channel, Context.MODE_PRIVATE);
         editor = sp.edit();
         initbarGroup();
@@ -57,10 +50,14 @@ public class MTG extends AppCompatActivity {
 
         BarG1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int value;
+            int v;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
-                tvG1.setText(String.format("G1 : "+(progress-80)+" dB"));
+                v = progress-80;
+                tvG1.setText(String.format("G1 : "+v+" dB"));
+                dataOutput = String.format("mg1/%.0f",v);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -76,10 +73,14 @@ public class MTG extends AppCompatActivity {
         });
         BarG2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int value;
+            int v;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
-                tvG2.setText(String.format("G2 : "+(progress-80)+" dB"));
+                v = progress-80;
+                tvG2.setText(String.format("G2 : "+v+" dB"));
+                dataOutput = String.format("mg2/%.0f",v);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -95,10 +96,14 @@ public class MTG extends AppCompatActivity {
         });
         BarG3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int value;
+            int v;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
-                tvG3.setText(String.format("G3 : "+(progress-80)+" dB"));
+                v = progress-80;
+                tvG3.setText(String.format("G3 : "+v+" dB"));
+                dataOutput = String.format("mg3/%.0f",v);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -114,10 +119,14 @@ public class MTG extends AppCompatActivity {
         });
         BarG4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int value;
+            int v;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
-                tvG4.setText(String.format("G4 : "+(progress-80)+" dB"));
+                v = progress-80;
+                tvG4.setText(String.format("G4 : "+v+" dB"));
+                dataOutput = String.format("mg4/%.0f",v);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -131,6 +140,16 @@ public class MTG extends AppCompatActivity {
                 editor.commit();
             }
         });
+        /*butBack = (Button) findViewById(R.id.butBack);
+        butBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fmeq = new fmEQ();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.maincontent,fmeq);
+                ft.commit();
+            }
+        });*/
     }
     private void initswLockMtg(){
         swG1 = (Switch) findViewById(R.id.swG1);

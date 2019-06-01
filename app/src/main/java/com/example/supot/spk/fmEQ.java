@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.akexorcist.simpletcp.SimpleTcpClient;
 
 
 /**
@@ -30,6 +33,7 @@ public class fmEQ extends Fragment {
     private TextView tvEq,textV1;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    private String dataOutput = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,6 +86,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("20Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq1/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -104,6 +110,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("40Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq2/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -126,6 +134,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("63Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq3/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -147,6 +157,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("100Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq4/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -168,6 +180,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("160Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq5/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -189,6 +203,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("300Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq6/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -210,6 +226,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("500Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq7/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -231,6 +249,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("800Hz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq8/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -252,6 +272,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("1KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq9/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -273,6 +295,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("1.2KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq10/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -294,6 +318,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("2.2KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq11/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -315,6 +341,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("5KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq12/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -336,6 +364,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("10KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq13/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -357,6 +387,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("12KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq14/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -378,6 +410,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("16KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq15/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -399,6 +433,8 @@ public class fmEQ extends Fragment {
                 progressChanged = (progress-150)*0.1f;
                 value = progress;
                 tvEq.setText(String.format("20KHz : %.2f dB",progressChanged));
+                dataOutput = String.format("eq16/%.2f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
             @Override
@@ -421,6 +457,9 @@ public class fmEQ extends Fragment {
                 progressChanged = progress-80;
                 value = progress;
                 tvEq.setText(String.format("MASTER : %.0f dB",progressChanged));
+                dataOutput = String.format("eqm/%.0f",progressChanged);
+                SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
+
             }
 
             @Override
@@ -493,8 +532,10 @@ public class fmEQ extends Fragment {
         butMtg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MTG.class);
-                startActivity(intent);
+                Fragment fmmtg = new fm_Mtg();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.maincontent,fmmtg);
+                ft.commit();
             }
         });
     }

@@ -37,7 +37,7 @@ public class fmCrossover extends Fragment {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String dataOutput1 = null;
-    String dataOutput2 = null;
+    private String dataOutput2 = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
