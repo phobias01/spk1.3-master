@@ -63,16 +63,16 @@ public class fmCrossover extends Fragment {
         tvMax.setText(String.valueOf(maxValue+" Hz"));
 
         crossoverBar.setOnRangeChangedListener(new OnRangeChangedListener() {
-            int Lvalue;
-            int Rvalue;
+            int Lvalue=0;
+            int Rvalue=0;
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
                 tvMin.setText(String.format("%.0f Hz",leftValue));
                 tvMax.setText(String.format("%.0f Hz",rightValue));
                // Lvalue = (int)leftValue;
               //  Rvalue = (int)rightValue;
-                dataOutput1 = "CrossoverMin/"+Lvalue;
-                dataOutput2 = "CrossoverMax/"+Rvalue;
+                dataOutput1 = String.format("CrossoverMin/%.0f",leftValue);
+                dataOutput2 = String.format("CrossoverMax/%.0f",rightValue);
                 if(Lvalue!=(int)leftValue) {
                     Lvalue = (int)leftValue;
                     SimpleTcpClient.send(dataOutput1, Const.ip, Const.port);

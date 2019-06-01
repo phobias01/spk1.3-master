@@ -33,7 +33,7 @@ public class fmEQ extends Fragment {
     private TextView tvEq,textV1;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
-    private String dataOutput = null;
+    String dataOutput = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -471,6 +471,10 @@ public class fmEQ extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 editor.putInt(Const.master_eq_slide,value);
                 editor.commit();
+                /*Fragment fmmtg = new fm_Mtg();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.maincontent,fmmtg);
+                ft.commit();*/
             }
         });
         butStopEq.setOnClickListener(new View.OnClickListener() {
@@ -532,10 +536,8 @@ public class fmEQ extends Fragment {
         butMtg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fmmtg = new fm_Mtg();
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.maincontent,fmmtg);
-                ft.commit();
+                Intent intent = new Intent(getActivity(),MTG.class);
+                startActivity(intent);
             }
         });
     }

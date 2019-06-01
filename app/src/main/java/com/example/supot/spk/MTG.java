@@ -55,8 +55,8 @@ public class MTG extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
                 v = progress-80;
-                tvG1.setText(String.format("G1 : "+v+" dB"));
-                dataOutput = String.format("mg1/%.0f",v);
+                tvG1.setText(String.valueOf("G1 : "+v+" dB"));
+                dataOutput = String.valueOf("mg1/"+v);
                 SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
@@ -78,8 +78,8 @@ public class MTG extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
                 v = progress-80;
-                tvG2.setText(String.format("G2 : "+v+" dB"));
-                dataOutput = String.format("mg2/%.0f",v);
+                tvG2.setText(String.valueOf("G2 : "+v+" dB"));
+                dataOutput = String.valueOf("mg2/"+v);
                 SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
@@ -101,8 +101,8 @@ public class MTG extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
                 v = progress-80;
-                tvG3.setText(String.format("G3 : "+v+" dB"));
-                dataOutput = String.format("mg3/%.0f",v);
+                tvG3.setText(String.valueOf("G3 : "+v+" dB"));
+                dataOutput = String.valueOf("mg3/"+v);
                 SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
@@ -124,8 +124,8 @@ public class MTG extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 value = progress;
                 v = progress-80;
-                tvG4.setText(String.format("G4 : "+v+" dB"));
-                dataOutput = String.format("mg4/%.0f",v);
+                tvG4.setText(String.valueOf("G4 : "+v+" dB"));
+                dataOutput = String.valueOf("mg4/"+v);
                 SimpleTcpClient.send(dataOutput,Const.ip,Const.port);
             }
 
@@ -140,7 +140,7 @@ public class MTG extends AppCompatActivity {
                 editor.commit();
             }
         });
-        /*butBack = (Button) findViewById(R.id.butBack);
+        butBack = (Button) findViewById(R.id.butBack);
         butBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +149,7 @@ public class MTG extends AppCompatActivity {
                 ft.replace(R.id.maincontent,fmeq);
                 ft.commit();
             }
-        });*/
+        });
     }
     private void initswLockMtg(){
         swG1 = (Switch) findViewById(R.id.swG1);
