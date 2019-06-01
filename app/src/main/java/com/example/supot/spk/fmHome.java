@@ -154,9 +154,9 @@ public class fmHome extends Fragment {
                                 //setListSpk.remove(arraySpk.get(i));
                             }
                         }
-                        setListG1.addAll(arrayG1);
+                        /*setListG1.addAll(arrayG1);
                         editor.putStringSet(Const.list_group_1,setListG1);
-                        editor.commit();
+                        editor.commit();*/
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG1.notifyDataSetChanged();
@@ -242,9 +242,9 @@ public class fmHome extends Fragment {
                                 editor.commit();*/
                             }
                         }
-                        setListG1.addAll(arrayG1);
+                       /* setListG1.addAll(arrayG1);
                         editor.putStringSet(Const.list_group_1,setListG1);
-                        editor.commit();
+                        editor.commit();*/
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG1.notifyDataSetChanged();
@@ -324,12 +324,12 @@ public class fmHome extends Fragment {
                 });
             }
         });
-        final Set<String> story = sp.getStringSet(Const.list_group_1,null);
+        /*final Set<String> story = sp.getStringSet(Const.list_group_1,null);
         for (String x: story) {
             arrayG1.add(x);
         }
         listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listG1.setAdapter(adapterG1);
-        adapterG1.notifyDataSetChanged();
+        adapterG1.notifyDataSetChanged();*/
     }
 }

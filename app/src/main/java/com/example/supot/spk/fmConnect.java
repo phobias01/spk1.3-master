@@ -52,7 +52,7 @@ public class fmConnect extends Fragment {
         butOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Const.ip ="";
+                Const.ip = null;
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.maincontent,new fmHome());
                 ft.commit();
@@ -64,7 +64,6 @@ public class fmConnect extends Fragment {
             @Override
             public void onClick(View v) {
                 Const.ip = editIP.getText().toString();
-                Const.spkconnect = new spkConnect(Const.ip,Const.port);
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.maincontent,new fmHome());
                 ft.commit();

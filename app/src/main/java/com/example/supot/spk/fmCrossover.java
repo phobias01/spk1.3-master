@@ -14,8 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
-import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
+import com.akexorcist.simpletcp.SimpleTcpClient;
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 
@@ -37,6 +36,8 @@ public class fmCrossover extends Fragment {
     private Button butSet;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    String dataOutput1 = null;
+    String dataOutput2 = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,8 +69,20 @@ public class fmCrossover extends Fragment {
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
                 tvMin.setText(String.format("%.0f Hz",leftValue));
                 tvMax.setText(String.format("%.0f Hz",rightValue));
-                Lvalue = (int)leftValue;
-                Rvalue = (int)rightValue;
+               // Lvalue = (int)leftValue;
+              //  Rvalue = (int)rightValue;
+                dataOutput1 = "CrossoverMin/"+Lvalue;
+                dataOutput2 = "CrossoverMax/"+Rvalue;
+                if(Lvalue!=(int)leftValue) {
+                    Lvalue = (int)leftValue;
+                    SimpleTcpClient.send(dataOutput1, Const.ip, Const.port);
+                    //Lvalue = (int)leftValue;
+                }
+                if(Rvalue!=(int)rightValue) {
+                    Rvalue = (int)rightValue;
+                    SimpleTcpClient.send(dataOutput2, Const.ip, Const.port);
+                    //Rvalue = (int)rightValue;
+                }
             }
 
             @Override
@@ -113,6 +126,8 @@ public class fmCrossover extends Fragment {
                     int cmin = sp.getInt(Const.crossover_min,50);
                     int cmax = sp.getInt(Const.crossover_max,500);
                     crossoverBar.setValue(sp.getInt(Const.set_crossover_min,cmin),sp.getInt(Const.set_crossover_max,cmax));
+                    SimpleTcpClient.send("CrossoverMin/"+String.valueOf(cmin), Const.ip, Const.port);
+                    SimpleTcpClient.send("CrossoverMax/"+String.valueOf(cmax), Const.ip, Const.port);
                 }catch (Exception e) {Toast.makeText(getActivity(),"Please enter a value.", Toast.LENGTH_SHORT).show();}
 
             }

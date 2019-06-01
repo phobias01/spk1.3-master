@@ -51,11 +51,5 @@ public class Const {
     public static final String set_crossover_min = "crossover_min";
     public static final String set_crossover_max = "crossover_max";
 
-    public static spkConnect spkconnect =null;
-
-
-
-
-
 
 }

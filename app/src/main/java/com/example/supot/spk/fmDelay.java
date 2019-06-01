@@ -15,7 +15,8 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
-
+import com.akexorcist.simpletcp.SimpleTcpClient;
+import com.akexorcist.simpletcp.SimpleTcpServer;
 
 
 /**
@@ -27,14 +28,12 @@ public class fmDelay extends Fragment {
     public fmDelay() {
         // Required empty public constructor
     }
-
     private SeekBar delayBar1,delayBar2,delayBar3,delayBar4;
     private TextView msView1,msView2,msView3,msView4,mView1,mView2,mView3,mView4;
     private Switch swG1,swG2,swG3,swG4;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
-    String dataOutput = "";
-    sendTCP sd = new sendTCP();
+    String dataOutput = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,8 +70,7 @@ public class fmDelay extends Fragment {
                 mView1.setText(String.format("%.2f",progress*0.343)+" m");
                 value = progress;
                 dataOutput = "delay1/"+progress;
-                sd.sendTCP(dataOutput);
-               // Log.d("26JanV1", "Delay ==>  " + progress);
+                SimpleTcpClient.send(dataOutput, Const.ip, Const.port);
             }
 
             @Override
@@ -82,8 +80,6 @@ public class fmDelay extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                //sd.sendTCP(dataOutput);
-                //Log.d("26JanV1", "DElay ==>  " + Const.ip+"/"+Const.port);
                 editor.putInt(Const.delay_bar_1,value);
                 editor.commit();
             }
@@ -96,6 +92,8 @@ public class fmDelay extends Fragment {
                 msView2.setText(progress+" ms");
                 mView2.setText(String.format("%.2f",progress*0.343)+" m");
                 value = progress;
+                dataOutput = "delay2/"+progress;
+                SimpleTcpClient.send(dataOutput, Const.ip, Const.port);
             }
 
             @Override
@@ -117,6 +115,8 @@ public class fmDelay extends Fragment {
                 msView3.setText(progress+" ms");
                 mView3.setText(String.format("%.2f",progress*0.343)+" m");
                 value = progress;
+                dataOutput = "delay3/"+progress;
+                SimpleTcpClient.send(dataOutput, Const.ip, Const.port);
             }
 
             @Override
@@ -138,6 +138,8 @@ public class fmDelay extends Fragment {
                 msView4.setText(progress+" ms");
                 mView4.setText(String.format("%.2f",progress*0.343)+" m");
                 value = progress;
+                dataOutput = "delay4/"+progress;
+                SimpleTcpClient.send(dataOutput, Const.ip, Const.port);
             }
 
             @Override
