@@ -18,7 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akexorcist.simpletcp.SimpleTcpClient;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -39,7 +42,7 @@ public class fmHome extends Fragment {
     private SeekBar masterBar;
     private Context context;
     private ListView listSpk,listG1,listG2,listG3,listG4;
-    private ArrayList<String> arraySpk,arrayG1,arrayG2,arrayG3,arrayG4,AlistSpk,AlistG1,AlistG2,AlistG3,AlistG4;
+    private ArrayList<String> arraySpk,arrayG1,arrayG2,arrayG3,arrayG4;
     private ArrayAdapter adapterSpk,adapterG1,adapterG2,adapterG3,adapterG4;
     private Button butExport,butG1,butG2,butG3,butG4;
     SharedPreferences sp;
@@ -54,6 +57,7 @@ public class fmHome extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fm_home, container, false);
         sp = this.getActivity().getSharedPreferences(Const.sp_channel, Context.MODE_PRIVATE);
         editor = sp.edit();
+        loadData();
         initmasterBar(view);
         initmanegeGroup(view);
         return view;
@@ -95,6 +99,53 @@ public class fmHome extends Fragment {
 
     }
 
+    private void saveData() {
+        Gson gson = new Gson();
+        String jsonSpk = gson.toJson(arraySpk);
+        String json1 = gson.toJson(arrayG1);
+        String json2 = gson.toJson(arrayG2);
+        String json3 = gson.toJson(arrayG3);
+        String json4 = gson.toJson(arrayG4);
+        editor.putString(Const.list_group_spk, jsonSpk);
+        editor.putString(Const.list_group_1, json1);
+        editor.putString(Const.list_group_2, json2);
+        editor.putString(Const.list_group_3, json3);
+        editor.putString(Const.list_group_4, json4);
+        editor.commit();
+    }
+
+    private void loadData() {
+        Gson gson = new Gson();
+        String jsonSpk = sp.getString(Const.list_group_spk, null);
+        String json1 = sp.getString(Const.list_group_1, null);
+        String json2 = sp.getString(Const.list_group_2, null);
+        String json3 = sp.getString(Const.list_group_3, null);
+        String json4 = sp.getString(Const.list_group_4, null);
+
+        Type type = new TypeToken<ArrayList>(){}.getType();
+        arraySpk = gson.fromJson(jsonSpk, type);
+        arrayG1 = gson.fromJson(json1, type);
+        arrayG2 = gson.fromJson(json2, type);
+        arrayG3 = gson.fromJson(json3, type);
+        arrayG4 = gson.fromJson(json4, type);
+
+        if (arraySpk == null) {
+            arraySpk = new ArrayList<>();
+        }
+        if (arrayG1 == null) {
+            arrayG1 = new ArrayList<>();
+        }
+        if (arrayG2 == null) {
+            arrayG2 = new ArrayList<>();
+        }
+        if (arrayG3 == null) {
+            arrayG3 = new ArrayList<>();
+        }
+        if (arrayG4 == null) {
+            arrayG4 = new ArrayList<>();
+        }
+    }
+
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
@@ -110,36 +161,26 @@ public class fmHome extends Fragment {
         butG2 = (Button) view.findViewById(R.id.butG2);
         butG3 = (Button) view.findViewById(R.id.butG3);
         butG4 = (Button) view.findViewById(R.id.butG4);
-        arraySpk = new ArrayList<>();
-        arrayG1 = new ArrayList<>();
-        arrayG2 = new ArrayList<>();
-        arrayG3 = new ArrayList<>();
-        arrayG4 = new ArrayList<>();
-        AlistSpk = new ArrayList<>();
-        AlistG1 = new ArrayList<>();
-        AlistG2 = new ArrayList<>();
-        AlistG3 = new ArrayList<>();
-        AlistG4 = new ArrayList<>();
-        arrayG1 = new ArrayList<>();
-        arrayG2 = new ArrayList<>();
-        arrayG3 = new ArrayList<>();
-        arrayG4 = new ArrayList<>();
-        final Set<String> setListSpk = new HashSet<String>();
-        final Set<String> setListG1 = new HashSet<String>();
-        final Stack<String> STACK = new Stack<String>();
-        //Set<String> setSpk = new HashSet<String>();
+        //arraySpk = new ArrayList<>();
+
         for (int i = 1; i <= 50; i++) {
             arraySpk.add("Spk NO." + i);
         }
         adapterSpk = new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arraySpk);
         listSpk.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listSpk.setAdapter(adapterSpk);
-
         adapterG1= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG1);
+        listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listG1.setAdapter(adapterG1);
         adapterG2= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG2);
+        listG2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listG2.setAdapter(adapterG2);
         adapterG3= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG3);
+        listG3.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listG3.setAdapter(adapterG3);
         adapterG4= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG4);
-
+        listG4.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listG4.setAdapter(adapterG4);
         listSpk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -148,20 +189,15 @@ public class fmHome extends Fragment {
                     public void onClick(View v) {
                         SparseBooleanArray checkedItemPositions = listSpk.getCheckedItemPositions();
                         int itemCount = adapterSpk.getCount();
-
                         for(int i=itemCount-1; i >= 0; i--){
                             if(checkedItemPositions.get(i)){
                                 arrayG1.add(arraySpk.get(i));
-                               // STACK.push(arraySpk.get(i));
                                 listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listG1.setAdapter(adapterG1);
                                 arraySpk.remove(arraySpk.get(i));
-                                //setListSpk.remove(arraySpk.get(i));
                             }
                         }
-                        /*setListG1.addAll(arrayG1);
-                        editor.putStringSet(Const.list_group_1,setListG1);
-                        editor.commit();*/
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG1.notifyDataSetChanged();
@@ -181,6 +217,7 @@ public class fmHome extends Fragment {
                                 arraySpk.remove(arraySpk.get(i));
                             }
                         }
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG2.notifyDataSetChanged();
@@ -200,6 +237,7 @@ public class fmHome extends Fragment {
                                 arraySpk.remove(arraySpk.get(i));
                             }
                         }
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG3.notifyDataSetChanged();
@@ -219,6 +257,7 @@ public class fmHome extends Fragment {
                                 arraySpk.remove(arraySpk.get(i));
                             }
                         }
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG4.notifyDataSetChanged();
@@ -240,16 +279,10 @@ public class fmHome extends Fragment {
                                 arraySpk.add(arrayG1.get(i));
                                 listSpk.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
                                 listSpk.setAdapter(adapterSpk);
-                                //adapterG1.remove(arrayG1.get(i));
                                 arrayG1.remove(arrayG1.get(i));
-                                /*setListG1.addAll(arrayG1);
-                                editor.putStringSet(Const.list_group_1,setListG1);
-                                editor.commit();*/
                             }
                         }
-                       /* setListG1.addAll(arrayG1);
-                        editor.putStringSet(Const.list_group_1,setListG1);
-                        editor.commit();*/
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG1.notifyDataSetChanged();
@@ -274,6 +307,7 @@ public class fmHome extends Fragment {
                                 adapterG2.remove(arrayG2.get(i));
                             }
                         }
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG2.notifyDataSetChanged();
@@ -298,6 +332,7 @@ public class fmHome extends Fragment {
                                 adapterG3.remove(arrayG3.get(i));
                             }
                         }
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG3.notifyDataSetChanged();
@@ -322,6 +357,7 @@ public class fmHome extends Fragment {
                                 adapterG4.remove(arrayG4.get(i));
                             }
                         }
+                        saveData();
                         checkedItemPositions.clear();
                         adapterSpk.notifyDataSetChanged();
                         adapterG4.notifyDataSetChanged();
@@ -329,12 +365,5 @@ public class fmHome extends Fragment {
                 });
             }
         });
-        /*final Set<String> story = sp.getStringSet(Const.list_group_1,null);
-        for (String x: story) {
-            arrayG1.add(x);
-        }
-        listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        listG1.setAdapter(adapterG1);
-        adapterG1.notifyDataSetChanged();*/
     }
 }

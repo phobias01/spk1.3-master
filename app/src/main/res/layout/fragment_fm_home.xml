@@ -14,7 +14,7 @@
             android:id="@+id/divider1"
             android:layout_width="1dp"
             android:layout_height="250dp"
-            android:layout_marginStart="9dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="65dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintStart_toEndOf="@+id/listSpk"
@@ -33,9 +33,9 @@
         <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
             android:layout_width="21dp"
             android:layout_height="235dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="34dp"
             android:layout_marginTop="77dp"
-            app:layout_constraintStart_toEndOf="@+id/progressVol2"
+            app:layout_constraintStart_toEndOf="@+id/divider2"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
@@ -50,26 +50,11 @@
 
         <ListView
             android:id="@+id/listSpk"
-            android:layout_width="135dp"
+            android:layout_width="138dp"
             android:layout_height="250dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="64dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/progressVol2"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="15dp"
-            android:layout_height="215dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="85dp"
-            android:adjustViewBounds="true"
-            android:max="120"
-            android:progress="5"
-            app:layout_constraintStart_toEndOf="@+id/divider2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
