@@ -51,5 +51,8 @@ public class Const {
     public static final String set_crossover_min = "crossover_min";
     public static final String set_crossover_max = "crossover_max";
 
+    public static final String spk_number = "spk_number";
+    public static final String numberCe = "numberCe";
 
+    public static final String test = "test";
 }

@@ -24,6 +24,9 @@
                 android:id="@+id/nav_new"
                 android:title="NEW" />
             <item
+                android:id="@+id/nav_set"
+                android:title="SET SPK NO."/>
+            <item
                 android:id="@+id/nav_load"
                 android:title="LOAD" />
             <item

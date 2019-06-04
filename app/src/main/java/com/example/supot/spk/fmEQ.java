@@ -616,5 +616,4 @@ public class fmEQ extends Fragment {
         eqBar_20k.setProgress(sp.getInt(Const.master_eq_slide_value_16,150));
         eqBar_Master.setProgress(sp.getInt(Const.master_eq_slide,80));
     }
-
 }

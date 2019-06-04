@@ -107,6 +107,10 @@ public class MainActivity extends AppCompatActivity
                 fm = new fmDelay();
                 strTitle = "DELAY";
                 break;
+            case R.id.nav_set:
+                fm = new fmSetspk();
+                strTitle = "SET SPK NO.";
+                break;
         }
 
         if (fm != null){

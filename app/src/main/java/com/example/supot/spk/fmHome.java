@@ -42,7 +42,7 @@ public class fmHome extends Fragment {
     private SeekBar masterBar;
     private Context context;
     private ListView listSpk,listG1,listG2,listG3,listG4;
-    private ArrayList<String> arraySpk,arrayG1,arrayG2,arrayG3,arrayG4;
+    private ArrayList<String> arraySpk,arrayG1,arrayG2,arrayG3,arrayG4,arrayTest;
     private ArrayAdapter adapterSpk,adapterG1,adapterG2,adapterG3,adapterG4;
     private Button butExport,butG1,butG2,butG3,butG4;
     SharedPreferences sp;
@@ -129,19 +129,19 @@ public class fmHome extends Fragment {
         arrayG3 = gson.fromJson(json3, type);
         arrayG4 = gson.fromJson(json4, type);
 
-        if (arraySpk == null) {
+        if (arraySpk.isEmpty()) {
             arraySpk = new ArrayList<>();
         }
-        if (arrayG1 == null) {
+        if (arrayG1.isEmpty()) {
             arrayG1 = new ArrayList<>();
         }
-        if (arrayG2 == null) {
+        if (arrayG2.isEmpty()) {
             arrayG2 = new ArrayList<>();
         }
-        if (arrayG3 == null) {
+        if (arrayG3.isEmpty()) {
             arrayG3 = new ArrayList<>();
         }
-        if (arrayG4 == null) {
+        if (arrayG4.isEmpty()) {
             arrayG4 = new ArrayList<>();
         }
     }
@@ -162,25 +162,31 @@ public class fmHome extends Fragment {
         butG3 = (Button) view.findViewById(R.id.butG3);
         butG4 = (Button) view.findViewById(R.id.butG4);
         //arraySpk = new ArrayList<>();
+        //if(arraySpk.isEmpty()) {
+        //int checklength = sp.getInt(Const.numberCe,0);
 
-        for (int i = 1; i <= 50; i++) {
-            arraySpk.add("Spk NO." + i);
-        }
+        //arraySpk.add(sp.getString(Const.spk_number,null));
+        //}
         adapterSpk = new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arraySpk);
         listSpk.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listSpk.setAdapter(adapterSpk);
+
         adapterG1= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG1);
         listG1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listG1.setAdapter(adapterG1);
+
         adapterG2= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG2);
         listG2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listG2.setAdapter(adapterG2);
+
         adapterG3= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG3);
         listG3.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listG3.setAdapter(adapterG3);
+
         adapterG4= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_single_choice,arrayG4);
         listG4.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listG4.setAdapter(adapterG4);
+
         listSpk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
