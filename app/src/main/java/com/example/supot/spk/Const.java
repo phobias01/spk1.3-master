@@ -52,6 +52,9 @@ public class Const {
     public static final String set_crossover_max = "crossover_max";
 
     public static final String spk_number = "spk_number";
+    public static final String spk_ip = "spk_ip";
+    public static final String spk_setnumip = "spk_setnumip";
+
     public static final String numberCe = "numberCe";
 
     public static final String test = "test";

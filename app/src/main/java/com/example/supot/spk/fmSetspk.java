@@ -34,7 +34,7 @@ public class fmSetspk extends Fragment {
     private ArrayAdapter adapterIp,adapterNum,adapterlistIN;
     private ArrayList<String> arrayIp,arrayNum,arraylistIN;
     private ListView listSetspk;
-    private Button butSetnum;
+    private Button butSetnum,button;
     private Spinner spinIP,spinNum;
     private Context context;
     SharedPreferences sp;
@@ -47,50 +47,49 @@ public class fmSetspk extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fm_setspk, container, false);
         sp = this.getActivity().getSharedPreferences(Const.sp_channel, Context.MODE_PRIVATE);
         editor = sp.edit();
+        loadData();
         initsetNumIP(view);
         return view;
     }
 
     private void saveData() {
-       /* Gson gson = new Gson();
-        String jsonSpk = gson.toJson(arraySpk);
-        String json1 = gson.toJson(arrayG1);
-        String json2 = gson.toJson(arrayG2);
-        String json3 = gson.toJson(arrayG3);
-        String json4 = gson.toJson(arrayG4);
-        editor.putString(Const.list_group_spk, jsonSpk);
-        editor.putString(Const.list_group_1, json1);
-        editor.putString(Const.list_group_2, json2);
-        editor.putString(Const.list_group_3, json3);
-        editor.putString(Const.list_group_4, json4);
-        editor.commit();*/
+        Gson gson = new Gson();
+        String jsonlistIN = gson.toJson(arraylistIN);
+        String jsonIp = gson.toJson(arrayIp);
+        String jsonNum = gson.toJson(arrayNum);
+        editor.putString(Const.spk_setnumip, jsonlistIN);
+        editor.putString(Const.spk_ip, jsonIp);
+        editor.putString(Const.spk_number, jsonNum);
+        editor.commit();
     }
 
     private void loadData() {
-        /*Gson gson = new Gson();
-        String jsonSpk = sp.getString(Const.list_group_spk, null);
-        String json1 = sp.getString(Const.list_group_1, null);
-        String json2 = sp.getString(Const.list_group_2, null);
-        String json3 = sp.getString(Const.list_group_3, null);
-        String json4 = sp.getString(Const.list_group_4, null);
+        Gson gson = new Gson();
+        String jsonlistIN = sp.getString(Const.spk_setnumip, null);
+        String jsonIp = sp.getString(Const.spk_ip, null);
+        String jsonNum = sp.getString(Const.spk_number, null);
 
         Type type = new TypeToken<ArrayList>(){}.getType();
-        arrayIP = gson.fromJson(jsonSpk, type);
-        //arrayG1 = gson.fromJson(json1, type);
-        //arrayG2 = gson.fromJson(json2, type);
 
+        arraylistIN = gson.fromJson(jsonlistIN, type);
+        arraylistIN = gson.fromJson(jsonIp, type);
+        arraylistIN = gson.fromJson(jsonNum, type);
 
-
-        if (arraySpk.isEmpty()) {
-            arraySpk = new ArrayList<>();
+        if (arraylistIN == null) {
+            arraylistIN = new ArrayList<>();
         }
-        if (arrayG1.isEmpty()) {
-            arrayG1 = new ArrayList<>();
+        if (arrayIp == null) {
+            arrayIp = new ArrayList<>();
+            for (int i = 1; i <= 100; i++) {
+                arrayIp.add("192.168.1." + i);
+            }
         }
-        if (arrayG2.isEmpty()) {
-            arrayG2 = new ArrayList<>();
-        }*/
-
+        if (arrayNum == null) {
+            arrayNum = new ArrayList<>();
+            for (int i = 1; i <= 100; i++) {
+                arrayNum.add("No."+i);
+            }
+        }
     }
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -100,49 +99,56 @@ public class fmSetspk extends Fragment {
     public void initsetNumIP(View view){
         listSetspk = (ListView) view.findViewById(R.id.listSetspk);
         butSetnum = (Button) view.findViewById(R.id.butSetnum);
+        button = (Button) view.findViewById(R.id.button);
         spinIP = (Spinner) view.findViewById(R.id.spinIP);
         spinNum = (Spinner) view.findViewById(R.id.spinNum);
-        arrayIp = new ArrayList<>();
-        if(arrayIp.isEmpty()) {
+       // arrayIp = new ArrayList<>();
+        /*if(arrayIp == null) {
             for (int i = 1; i <= 100; i++) {
                 arrayIp.add("192.168.1." + i);
             }
         }
-        arrayNum = new ArrayList<>();
-        if(arrayNum.isEmpty()) {
+        //arrayNum = new ArrayList<>();
+        if(arrayNum == null) {
             for (int i = 1; i <= 100; i++) {
                 arrayNum.add("No."+i);
             }
-        }
-        arraylistIN = new ArrayList<>();
+        }*/
+        //arraylistIN = new ArrayList<>();
         adapterIp = new ArrayAdapter <String> (this.context, android.R.layout.simple_spinner_dropdown_item,arrayIp);
         spinIP.setAdapter(adapterIp);
         adapterNum = new ArrayAdapter <String> (this.context, android.R.layout.simple_spinner_dropdown_item,arrayNum);
         spinNum.setAdapter(adapterNum);
 
-        adapterlistIN= new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_1,arraylistIN);
+        adapterlistIN = new ArrayAdapter<String>(this.context,android.R.layout.simple_list_item_1,arraylistIN);
         listSetspk.setAdapter(adapterlistIN);
-
-                butSetnum.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int posIP = spinIP.getSelectedItemPosition();
-                        int posNum = spinNum.getSelectedItemPosition();
-                        arraylistIN.add("IP : "+arrayIp.get(posIP)+" ==>> Number is set = "+arrayNum.get(posNum));
-                       // int i = arraylistIN.size();
-                        String spkno = "SPK"+arrayNum.get(posNum);
-                        arrayIp.remove(posIP);
-                        arrayNum.remove(posNum);
-                        adapterlistIN.notifyDataSetChanged();
-                        adapterIp.notifyDataSetChanged();
-                        adapterNum.notifyDataSetChanged();
-                        editor.putString(Const.spk_number,spkno);
-                        //editor.putInt(Const.numberCe,i);
-                        editor.commit();
-                    }
-                });
-
-
+        try {
+            butSetnum.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int posIP = spinIP.getSelectedItemPosition();
+                    int posNum = spinNum.getSelectedItemPosition();
+                    arraylistIN.add("IP : " + arrayIp.get(posIP) + " ==>> Number is set = " + arrayNum.get(posNum));
+                    arrayIp.remove(posIP);
+                    arrayNum.remove(posNum);
+                    listSetspk.setAdapter(adapterlistIN);
+                    spinIP.setAdapter(adapterIp);
+                    spinNum.setAdapter(adapterNum);
+                    saveData();
+                    adapterlistIN.notifyDataSetChanged();
+                    adapterIp.notifyDataSetChanged();
+                    adapterNum.notifyDataSetChanged();
+                }
+            });
+        }catch (Exception e) {}
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arraylistIN.clear();
+                listSetspk.setAdapter(adapterlistIN);
+                saveData();
+                adapterlistIN.notifyDataSetChanged();
+            }
+        });
     }
-
 }

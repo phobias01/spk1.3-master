@@ -129,19 +129,19 @@ public class fmHome extends Fragment {
         arrayG3 = gson.fromJson(json3, type);
         arrayG4 = gson.fromJson(json4, type);
 
-        if (arraySpk.isEmpty()) {
+        if (arraySpk == null) {
             arraySpk = new ArrayList<>();
         }
-        if (arrayG1.isEmpty()) {
+        if (arrayG1 == null) {
             arrayG1 = new ArrayList<>();
         }
-        if (arrayG2.isEmpty()) {
+        if (arrayG2 == null) {
             arrayG2 = new ArrayList<>();
         }
-        if (arrayG3.isEmpty()) {
+        if (arrayG3 == null) {
             arrayG3 = new ArrayList<>();
         }
-        if (arrayG4.isEmpty()) {
+        if (arrayG4 == null) {
             arrayG4 = new ArrayList<>();
         }
     }
